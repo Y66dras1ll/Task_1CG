@@ -28,7 +28,6 @@ public class World {
 
     }
     private void initializeTrees(int screenWidth) {
-        // Создаём деревья от START_X до правого края экрана с шагом STEP_X
         for (int x = 480; x < screenWidth; x += 30) {
             trees.add(new Tree(x, 605));
         }
