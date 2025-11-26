@@ -17,15 +17,10 @@ public class Tree {
 
 
         g.setColor(new Color(139, 69, 19));
-        int stemWidth = 10;   // Ширина ствола
-        int stemHeight = 19;  // Высота ствола
+        int stemWidth = 10;
+        int stemHeight = 19;
 
-        g.fillRect(
-                (int)(x - stemWidth / 2.0),
-                (int)(y - stemHeight),
-                stemWidth,
-                stemHeight
-        );
+        g.fillRect((int)(x - stemWidth / 2.0), (int)(y - stemHeight), stemWidth, stemHeight);
 
 
         g.setColor(new Color(34, 139, 34));
