@@ -2,7 +2,7 @@ package elements;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator; // Важно для удаления улетевших облаков
+import java.util.Iterator;
 
 import elements.Landscape.*;
 import elements.Objects.*;
@@ -32,7 +32,7 @@ public class World {
         }
 
         manageClouds(screenWidth);
-        
+
         for (Cloud cloud : clouds) {
             cloud.draw(g);
         }
@@ -50,10 +50,10 @@ public class World {
     }
 
     private void manageClouds(int screenWidth) {
-        if (Math.random() < 0.0043) {
+        if (Math.random() < 0.0042) {
 
-            int randomY = (int)(Math.random() * 225);
-            clouds.add(new Cloud(-150, randomY));
+            int randomY = (int)(Math.random() * 220);
+            clouds.add(new Cloud(-130, randomY));
         }
 
         Iterator<Cloud> it = clouds.iterator();
