@@ -24,7 +24,7 @@ public class BackGround {
        drawMountain(g, 560, 165, 475, 560, 670, 560, new Color(128,128,140));
        drawSnowCap(g,560, 165, 475, 560, 670, 560, new Color(255,255,255), 0.18);
        drawMountain(g, 430, 280, 355, 560, 485, 560, new Color(128,128,128));
-       drawMountain(g, 220, 245, 35, 560, 340, 560, new Color(150,150,160));
+       drawMountain(g, 220, 230, 29, 560, 346, 560, new Color(150,150,160));
 
 
        Path2D.Double hillRight = new Path2D.Double();
@@ -34,6 +34,7 @@ public class BackGround {
        hillRight.moveTo(660,470);
        hillRight.curveTo(710, 480, 760, 525, 820, 560);
        hillRight.lineTo(440, 560);
+       hillRight.closePath();
        g.fill(hillRight);
        Path2D.Double hillCentre = new Path2D.Double();
        g.setColor(new Color(0,128,0));
@@ -45,10 +46,11 @@ public class BackGround {
        g.fill(hillCentre);
        Path2D.Double hillLeft = new Path2D.Double();
        g.setColor(new Color(0,128,0));
-       hillLeft.moveTo(0, 420);
-       hillLeft.curveTo(30, 440, 100, 480, 220, 560);
+       hillLeft.moveTo(0, 405);
+       hillLeft.curveTo(30, 420, 100, 458, 220, 560);
        hillLeft.lineTo(0, 560);
        hillLeft.lineTo(0, 420);
+       hillLeft.closePath();
        g.fill(hillLeft);
 
        g.setColor(new Color(0,115,0));

@@ -24,7 +24,7 @@ public class World {
 
     public void draw(Graphics2D g, int screenWidth, int screenHeight){
         bg.draw(g, screenWidth, screenHeight);
-        // cs.draw(g);
+        cs.draw(g);
 
         if (!treesInitialized) {
             initializeTrees(screenWidth);
