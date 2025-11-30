@@ -11,18 +11,16 @@ public class World {
     private final BackGround bg;
     private final Castle cs;
     private final ArrayList<Tree> trees = new ArrayList<>();
-
-
     private final ArrayList<Cloud> clouds = new ArrayList<>();
 
     private boolean treesInitialized = false;
 
-    public World (){
-        bg = new BackGround(0,0);
-        cs = new Castle(0,0);
+    public World() {
+        bg = new BackGround(0, 0);
+        cs = new Castle(0, 0);
     }
 
-    public void draw(Graphics2D g, int screenWidth, int screenHeight){
+    public void draw(Graphics2D g, int screenWidth, int screenHeight) {
         bg.draw(g, screenWidth, screenHeight);
         cs.draw(g);
 
@@ -32,11 +30,9 @@ public class World {
         }
 
         manageClouds(screenWidth);
-
         for (Cloud cloud : clouds) {
             cloud.draw(g);
         }
-
 
         for (Tree tree : trees) {
             tree.draw(g);
@@ -44,25 +40,33 @@ public class World {
     }
 
     private void initializeTrees(int screenWidth) {
+
+        Color frontLeafColor = new Color(34, 139, 34);
+        Color backLeafColor = new Color(20, 95, 30);
+
+        Color frontStemColor = new Color(139, 69, 19);
+        Color backStemColor = new Color(105, 60, 16);
+
+
+        for (int x = 495; x < screenWidth; x += 30) {
+            trees.add(new Tree(x, 598, 9, 16, 14, backLeafColor, backStemColor));
+        }
+
         for (int x = 480; x < screenWidth; x += 30) {
-            trees.add(new Tree(x, 605));
+            trees.add(new Tree(x, 605, 10, 19, 14, frontLeafColor, frontStemColor));
         }
     }
 
     private void manageClouds(int screenWidth) {
         if (Math.random() < 0.0042) {
-
-            int randomY = (int)(Math.random() * 220);
+            int randomY = (int) (Math.random() * 220);
             clouds.add(new Cloud(-130, randomY));
         }
 
         Iterator<Cloud> it = clouds.iterator();
         while (it.hasNext()) {
             Cloud c = it.next();
-
             c.move();
-
-
             if (c.isOffScreen(screenWidth)) {
                 it.remove();
             }
