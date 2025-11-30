@@ -12,8 +12,10 @@ public class World {
     private final Castle cs;
     private final ArrayList<Tree> trees = new ArrayList<>();
     private final ArrayList<Cloud> clouds = new ArrayList<>();
+    private final ArrayList<Wave> waves = new ArrayList<>();
 
-    private boolean treesInitialized = false;
+    private boolean initialized = false;
+    private int globalTicks = 0;
 
     public World() {
         bg = new BackGround(0, 0);
@@ -22,12 +24,21 @@ public class World {
 
     public void draw(Graphics2D g, int screenWidth, int screenHeight) {
         bg.draw(g, screenWidth, screenHeight);
-        cs.draw(g);
 
-        if (!treesInitialized) {
+        if (!initialized) {
             initializeTrees(screenWidth);
-            treesInitialized = true;
+            initializeWaves(screenWidth, screenHeight);
+            initialized = true;
         }
+
+        globalTicks++;
+
+        for (Wave wave : waves) {
+            wave.update(globalTicks);
+            wave.draw(g);
+        }
+
+        cs.draw(g);
 
         manageClouds(screenWidth);
         for (Cloud cloud : clouds) {
@@ -39,14 +50,22 @@ public class World {
         }
     }
 
+    private void initializeWaves(int screenWidth, int screenHeight) {
+        int waterStartY = (int)(screenHeight * 0.77) + 15;
+
+        for (int y = waterStartY; y < screenHeight; y += 8) {
+            int speed = (y % 2 == 0) ? 1 : -1;
+            int waveHeight = 6;
+
+            waves.add(new Wave(0, y, waveHeight, speed, screenWidth));
+        }
+    }
+
     private void initializeTrees(int screenWidth) {
-
         Color frontLeafColor = new Color(34, 139, 34);
-        Color backLeafColor = new Color(20, 95, 30);
-
+        Color backLeafColor = new Color(28, 125, 28);
         Color frontStemColor = new Color(139, 69, 19);
-        Color backStemColor = new Color(105, 60, 16);
-
+        Color backStemColor = new Color(120, 64, 16);
 
         for (int x = 495; x < screenWidth; x += 30) {
             trees.add(new Tree(x, 598, 9, 16, 14, backLeafColor, backStemColor));

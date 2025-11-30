@@ -7,12 +7,11 @@ import elements.World;
 
 public class DrawPanel extends JPanel implements ActionListener {
     private final World world;
-    private final Timer timer;
 
     public DrawPanel() {
         world = new World();
 
-        timer = new Timer(30, this);
+        Timer timer = new Timer(30, this);
         timer.start();
     }
 
