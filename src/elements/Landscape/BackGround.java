@@ -27,23 +27,23 @@ public class BackGround {
        drawMountain(g, 220, 230, 29, 560, 346, 560, new Color(150,150,160));
 
 
-       Path2D.Double hillRight = new Path2D.Double();
-       g.setColor(new Color(0,140,40));
-       hillRight.moveTo(660,470);
-       hillRight.curveTo(600, 480, 560, 525, 440, 560);
-       hillRight.moveTo(660,470);
-       hillRight.curveTo(710, 480, 760, 525, 820, 560);
-       hillRight.lineTo(440, 560);
-       hillRight.closePath();
-       g.fill(hillRight);
        Path2D.Double hillCentre = new Path2D.Double();
-       g.setColor(new Color(0,128,0));
-       hillCentre.moveTo(1000, 420);
-       hillCentre.curveTo(980, 460, 860, 500, 790, 560);
-       hillCentre.lineTo(1000, 560);
-       hillCentre.lineTo(1000, 420);
+       g.setColor(new Color(0,140,40));
+       hillCentre.moveTo(660,470);
+       hillCentre.curveTo(600, 480, 560, 525, 440, 560);
+       hillCentre.moveTo(660,470);
+       hillCentre.curveTo(710, 480, 760, 525, 820, 560);
+       hillCentre.lineTo(440, 560);
        hillCentre.closePath();
        g.fill(hillCentre);
+       Path2D.Double hillRight = new Path2D.Double();
+       g.setColor(new Color(0,128,0));
+       hillRight.moveTo(1000, 420);
+       hillRight.curveTo(980, 460, 860, 500, 790, 560);
+       hillRight.lineTo(1000, 560);
+       hillRight.lineTo(1000, 420);
+       hillRight.closePath();
+       g.fill(hillRight);
        Path2D.Double hillLeft = new Path2D.Double();
        g.setColor(new Color(0,128,0));
        hillLeft.moveTo(0, 405);
