@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.geom.Path2D;
 
 public class BackGround {
-   private int x;
-   private int y;
+   private final int x;
+   private final int y;
    private static final Color SNOW_COLOR = new Color(255, 255, 255);
    private static final Color DEFAULT_MOUNTAIN_COLOR = new Color(128, 128, 128);
 
