@@ -9,12 +9,11 @@ public class DrawPanel extends JPanel implements ActionListener {
     private final World world;
 
     public DrawPanel() {
-        world = new World();
+        world = new World(1000, 800);
 
         Timer timer = new Timer(30, this);
         timer.start();
     }
-
 
     @Override
     public void paint(Graphics gr){

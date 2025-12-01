@@ -3,6 +3,7 @@ package elements;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import elements.Landscape.*;
 import elements.Objects.*;
@@ -10,26 +11,27 @@ import elements.Objects.*;
 public class World {
     private final BackGround bg;
     private final Castle cs;
-    private final ArrayList<Tree> trees = new ArrayList<>();
-    private final ArrayList<Cloud> clouds = new ArrayList<>();
-    private final ArrayList<Wave> waves = new ArrayList<>();
 
-    private boolean initialized = false;
+    private final List<Tree> trees;
+    private final List<Cloud> clouds;
+    private final List<Wave> waves;
+
     private int globalTicks = 0;
 
-    public World() {
-        bg = new BackGround(0, 0);
-        cs = new Castle(0, 0);
+    public World(int screenWidth, int screenHeight) {
+        this.bg = new BackGround(0, 0);
+        this.cs = new Castle(0, 0);
+
+        this.trees = new ArrayList<>();
+        this.clouds = new ArrayList<>();
+        this.waves = new ArrayList<>();
+
+        initializeTrees(screenWidth);
+        initializeWaves(screenWidth, screenHeight);
     }
 
     public void draw(Graphics2D g, int screenWidth, int screenHeight) {
         bg.draw(g, screenWidth, screenHeight);
-
-        if (!initialized) {
-            initializeTrees(screenWidth);
-            initializeWaves(screenWidth, screenHeight);
-            initialized = true;
-        }
 
         globalTicks++;
 
